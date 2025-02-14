@@ -25,4 +25,14 @@ export class ContactService {
     this.currentId++
     this.contacts.push({ ...contact, id: this.currentId})
   }
+
+  public updateContact(id: number, contact: Contact): Contact | string {
+    let contactToUpdate = this.contacts.at(id-1);
+    if (contactToUpdate) {
+      contactToUpdate = contact;
+      this.contacts[id-1] = contact
+      return contact;
+    }
+    return "No contact found here"
+  }
 }
